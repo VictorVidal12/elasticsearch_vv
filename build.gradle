@@ -59,7 +59,16 @@ plugins {
 }
 dependencyVerification {
     verificationMode = VerificationMode.NONE
-}  
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://plugins.gradle.org/m2/' }
+    maven { url 'https://jitpack.io' }
+}
+
+
 sonar {
   properties {
     property "sonar.projectKey", "VictorVidal12_elasticsearch_vv"
