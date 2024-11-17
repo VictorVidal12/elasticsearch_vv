@@ -2,12 +2,7 @@ import org.elasticsearch.gradle.internal.toolchain.OracleOpenJdkToolchainResolve
 import org.elasticsearch.gradle.internal.toolchain.ArchivedOracleJdkToolchainResolver
 import org.elasticsearch.gradle.internal.toolchain.AdoptiumJdkToolchainResolver
 
-gradleEnterprise {
-    buildScan {
-        publishAlwaysIf { false }
-        publishOnFailure { false }
-    }
-}
+
 
 pluginManagement {
   repositories {
@@ -29,6 +24,12 @@ plugins {
 }
 
 rootProject.name = "elasticsearch"
+gradleEnterprise {
+    buildScan {
+        publishAlwaysIf { false }
+        publishOnFailure { false }
+    }
+}
 
 dependencyResolutionManagement {
   versionCatalogs {
