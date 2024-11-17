@@ -38,7 +38,6 @@ buildscript {
 }
 
 plugins {
-  id "org.sonarqube" version "5.1.0.4882"
   id 'lifecycle-base'
   id 'elasticsearch.docker-support'
   id 'elasticsearch.global-build-info'
@@ -56,6 +55,7 @@ plugins {
   id 'elasticsearch.run-ccs'
   id 'elasticsearch.release-tools'
   id 'elasticsearch.versions'
+  id "org.sonarqube" version "5.1.0.4882"
 }
 sonar {
   properties {
