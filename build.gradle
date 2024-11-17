@@ -58,8 +58,9 @@ plugins {
   id "org.sonarqube" version "5.1.0.4882"
 }
 dependencyVerification {
-    verificationMode = VerificationMode.NONE
+    verificationMode = 'none'
 }
+
 
 repositories {
     mavenCentral()
