@@ -24,12 +24,6 @@ plugins {
 }
 
 rootProject.name = "elasticsearch"
-gradleEnterprise {
-    buildScan {
-        publishAlwaysIf { false }
-        publishOnFailure { false }
-    }
-}
 
 dependencyResolutionManagement {
   versionCatalogs {
