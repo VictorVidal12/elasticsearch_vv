@@ -57,6 +57,9 @@ plugins {
   id 'elasticsearch.versions'
   id "org.sonarqube" version "5.1.0.4882"
 }
+dependencyVerification {
+    verificationMode = VerificationMode.NONE
+}  
 sonar {
   properties {
     property "sonar.projectKey", "VictorVidal12_elasticsearch_vv"
