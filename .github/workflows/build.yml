@@ -46,9 +46,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonar -Dscan=false --info --stacktrace
 
-      # Paso 7: Crear una imagen Docker sin depender de docker.elastic.co
+      # Paso 7: Crear una imagen Docker usando Alpine como base
       - name: Build Docker Image
         run: |
           docker build \
-            --build-arg BASE_IMAGE=alpine:latest \ # Usando una imagen pública como base
-            -t my-docker-image .
+            -t my-docker-image . \
+            --build-arg BASE_IMAGE=alpine:latest
