@@ -33,7 +33,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build the project (skip Docker-related tasks)
-        run: ./gradlew clean build \-x distribution:docker:buildWolfiDockerImage \-x distribution:docker:docker-export:exportDockerImage \-x test \-Dscan=false
+        run: ./gradlew clean build \-x distribution:docker:buildWolfiDockerImage \-x distribution:docker:buildCloudEssDockerImage \-x distribution:docker:docker-export:exportDockerImage \-x test \-Dscan=false
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
