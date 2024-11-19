@@ -1,13 +1,17 @@
-/*
- * Copyright Elasticsearch B.V. and/or licensed to Elasticsearch B.V. under one
- * or more contributor license agreements. Licensed under the "Elastic License
- * 2.0", the "GNU Affero General Public License v3.0 only", and the "Server Side
- * Public License v 1"; you may not use this file except in compliance with, at
- * your election, the "Elastic License 2.0", the "GNU Affero General Public
- * License v3.0 only", or the "Server Side Public License, v 1".
- */
+Feature: Nombre de la característica
+  Una breve descripción opcional de lo que hace esta característica.
 
-package features;
+  Scenario: Nombre del escenario
+    Given una condición inicial
+    When se realiza una acción
+    Then se espera un resultado
 
-public class testing_features {
-}
+  Scenario Outline: Nombre del escenario con parámetros
+    Given una condición inicial con <parámetro>
+    When se realiza una acción con <parámetro>
+    Then se espera un resultado con <parámetro>
+
+    Examples:
+      | parámetro |
+      | valor1    |
+      | valor2    |
