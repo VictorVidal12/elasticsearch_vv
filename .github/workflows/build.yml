@@ -25,12 +25,8 @@ jobs:
           java-version: 21
           distribution: 'temurin'
 
-      - name: Build the project
-        run: ./gradlew clean build --refresh-dependencies --scan -Dgradle.buildScan.termsOfService=true --info
-
-      - name: Disable problematic task
-        run: |
-          echo "tasks.named('buildWolfiDockerImage') { enabled = false }" >> build.gradle
+      - name: Build the project (skip Docker task)
+        run: ./gradlew clean build -x distribution:docker:buildWolfiDockerImage --refresh-dependencies --scan -Dgradle.buildScan.termsOfService=true --info
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
