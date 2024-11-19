@@ -32,10 +32,10 @@ jobs:
           java-version: 21
           distribution: 'temurin'
 
-      - name: Build the project (skip Docker export and failing tests)
+      - name: Build the project (skip Docker export and tests)
         run: ./gradlew clean build \
-          -x distribution:docker:docker-export:exportDockerImage \
-          -x test --quiet
+          --exclude-task distribution:docker:docker-export:exportDockerImage \
+          --exclude-task test --quiet
 
       - name: Upload Test Report
         if: failure()
