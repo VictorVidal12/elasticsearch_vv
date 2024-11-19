@@ -22,6 +22,7 @@ jobs:
         run: |
           rm -rf ~/.gradle/caches/
           docker system prune -af
+
       - name: Restart Docker
         run: sudo service docker restart
 
@@ -32,13 +33,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Build the project (skip Docker export and tests)
-        run: ./gradlew clean build \
-          -x distribution:docker:docker-export:exportDockerImage \
-          -x test \
-          -Dscan=false --quiet
+        run: ./gradlew clean build \-x distribution:docker:docker-export:exportDockerImage \-x test \-Dscan=false --quiet
 
       - name: Upload Test Report
-        if: failure() && always()
+        if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: test-report
