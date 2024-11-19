@@ -22,7 +22,6 @@ jobs:
         run: |
           rm -rf ~/.gradle/caches/
           docker system prune -af
-
       - name: Restart Docker
         run: sudo service docker restart
 
@@ -36,10 +35,10 @@ jobs:
         run: ./gradlew clean build \
           -x distribution:docker:docker-export:exportDockerImage \
           -x test \
-          --quiet
+          -Dscan=false --quiet
 
       - name: Upload Test Report
-        if: failure()
+        if: failure() && always()
         uses: actions/upload-artifact@v3
         with:
           name: test-report
