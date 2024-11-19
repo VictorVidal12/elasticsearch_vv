@@ -27,15 +27,7 @@ import java.nio.file.Files
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING
 import static org.elasticsearch.gradle.util.GradleUtils.maybeConfigure
 
-buildscript {
-  repositories {
-    maven {
-      url 'https://jitpack.io'
-    }
 
-    mavenCentral()
-  }
-}
 
 plugins {
   id 'lifecycle-base'
@@ -57,6 +49,20 @@ plugins {
   id 'elasticsearch.versions'
 }
 
+dependencies {
+  testImplementation 'io.cucumber:cucumber-java:7.20.1'
+  testImplementation 'io.cucumber:cucumber-junit:7.20.1'
+}
+
+buildscript {
+  repositories {
+    maven {
+      url 'https://jitpack.io'
+    }
+
+    mavenCentral()
+  }
+}
 /**
  * This is a convenient method for declaring test artifact dependencies provided by the internal
  * test artifact plugin. It replaces basically the longer dependency notation with explicit capability
@@ -91,6 +97,7 @@ class ListExpansion {
 def filterIntermediatePatches = { List<Version> versions ->
   versions.groupBy {"${it.major}.${it.minor}"}.values().collect {it.max()}
 }
+
 
 tasks.register("updateCIBwcVersions") {
   def writeVersions = { File file, List<Version> versions ->
@@ -457,4 +464,9 @@ tasks.register("spotlessApply").configure {
   dependsOn gradle.includedBuild('build-tools').task(':spotlessApply')
   dependsOn gradle.includedBuild('build-tools').task(':reaper:spotlessApply')
   dependsOn gradle.includedBuild('build-tools-internal').task(':spotlessApply')
+}
+
+tasks.runCucumber(type: JavaExec) {
+  mainClass = 'com.example.runner.CucumberRunner'
+  classpath = sourceSets.test.runtimeClasspath
 }
