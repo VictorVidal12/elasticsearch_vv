@@ -34,8 +34,9 @@ jobs:
 
       - name: Build the project (skip Docker export and tests)
         run: ./gradlew clean build \
-          --exclude-task distribution:docker:docker-export:exportDockerImage \
-          --exclude-task test --quiet
+          -x distribution:docker:docker-export:exportDockerImage \
+          -x test \
+          --quiet
 
       - name: Upload Test Report
         if: failure()
