@@ -27,7 +27,15 @@ import java.nio.file.Files
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING
 import static org.elasticsearch.gradle.util.GradleUtils.maybeConfigure
 
+buildscript {
+  repositories {
+    maven {
+      url 'https://jitpack.io'
+    }
 
+    mavenCentral()
+  }
+}
 
 plugins {
   id 'lifecycle-base'
@@ -49,6 +57,13 @@ plugins {
   id 'elasticsearch.versions'
 }
 
+sonar {
+  properties {
+    property "sonar.projectKey", "VictorVidal12_elasticsearch_vv"
+    property "sonar.organization", "victorvidal12"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
+}
 dependencies {
   testImplementation 'io.cucumber:cucumber-java:7.20.1'
   testImplementation 'io.cucumber:cucumber-junit:7.20.1'
