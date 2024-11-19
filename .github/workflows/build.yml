@@ -26,7 +26,12 @@ jobs:
           distribution: 'temurin'
 
       - name: Build the project (skip Docker tasks)
-        run: ./gradlew clean build -x distribution:docker:buildWolfiDockerImage -x distribution:docker:buildCloudEssDockerImage --refresh-dependencies --scan -Dgradle.buildScan.termsOfService=true --info
+        run: |
+          ./gradlew clean build \
+            -x distribution:docker:buildWolfiDockerImage \
+            -x distribution:docker:buildCloudEssDockerImage \
+            -x distribution:docker:buildUbiDockerImage \
+            --refresh-dependencies --scan -Dgradle.buildScan.termsOfService=true --info
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
